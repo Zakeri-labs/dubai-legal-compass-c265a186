@@ -33,7 +33,7 @@ function Consult() {
   const { t } = useLocale();
   const [form, setForm] = useState({
     name: "", phone: "", whatsapp: "", email: "",
-    language: "en", type: "whatsapp", topic: SERVICES[0].slug,
+    language: "en", type: "whatsapp", topic: SERVICES[0].slug as string,
     description: "", date: "", time: "", urgency: "med", consent: false,
   });
   const [error, setError] = useState<string | null>(null);
