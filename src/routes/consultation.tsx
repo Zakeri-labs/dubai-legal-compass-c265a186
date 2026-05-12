@@ -45,7 +45,7 @@ function Consult() {
     if (!form.name || !form.phone || !form.description) { setError("Please fill in name, phone and description."); return; }
     if (!form.consent) { setError("Please accept the consent statement."); return; }
     setError(null);
-    const topicTitle = t.services.items[form.topic as keyof typeof t.services.items].title;
+    const topicTitle = t.services.items[form.topic as (typeof SERVICES)[number]["slug"]].title;
     const lines = [
       "📩 Consultation request",
       `Name: ${form.name}`,
