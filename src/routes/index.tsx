@@ -9,6 +9,7 @@ import { TrustTimeline } from "@/components/site/TrustTimeline";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import heroSectionBg from "@/assets/Hero-section.jpg";
+import heroSectionMobile from "@/assets/Hero-section-mobile.jpg";
 import * as Icons from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -33,24 +34,29 @@ function Home() {
       <section className="relative -mt-16 flex min-h-[min(92vh,56rem)] flex-col justify-center overflow-hidden pt-16 text-surface md:min-h-[min(90vh,60rem)]">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-cover bg-[center_28%] bg-no-repeat md:bg-center"
+          className="pointer-events-none absolute inset-0 bg-cover bg-no-repeat bg-[position:86%_center] lg:hidden"
+          style={{ backgroundImage: `url(${heroSectionMobile})` }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 hidden bg-cover bg-center bg-no-repeat lg:block"
           style={{ backgroundImage: `url(${heroSectionBg})` }}
         />
         <div className="container-px relative z-10 mx-auto w-full max-w-7xl py-16 md:py-24">
-          <div className="max-w-3xl text-start">
+          <div className="max-w-[min(100%,22rem)] text-start sm:max-w-md md:max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-gold">
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
               {t.hero.eyebrow}
             </div>
-            <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] text-surface md:text-5xl lg:text-[3.75rem]">
+            <h1 className="mt-4 font-display text-3xl font-semibold leading-[1.08] text-surface sm:text-[2rem] md:mt-5 md:text-5xl md:leading-[1.05] lg:text-[3.75rem]">
               {t.hero.title}
-              <span className="mt-2 block text-gradient-gold">{t.hero.titleAccent}</span>
+              <span className="mt-1.5 block text-gradient-gold md:mt-2">{t.hero.titleAccent}</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-surface/75 md:text-lg">
+            <p className="mt-4 max-w-[min(100%,17rem)] text-base leading-relaxed text-surface/75 sm:max-w-[min(100%,19rem)] md:mt-6 md:max-w-xl md:text-lg">
               {t.hero.subtitle}
             </p>
 
-            <div className="mt-8 flex">
+            <div className="mt-6 flex md:mt-8">
               <Link
                 to="/consultation"
                 className="inline-flex items-center justify-center gap-2 rounded-md bg-gold px-6 py-3.5 text-base font-semibold text-navy-deep shadow-lg shadow-black/20 transition hover:bg-gold-soft"
@@ -59,7 +65,7 @@ function Home() {
               </Link>
             </div>
 
-            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-white/10 pt-6 sm:grid-cols-4">
+            <dl className="mt-8 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-white/10 pt-5 sm:grid-cols-4 sm:gap-x-6 sm:gap-y-4 sm:pt-6 md:mt-10 md:pt-6">
               {[
                 { icon: Award, label: t.hero.cred1 },
                 { icon: Building2, label: t.hero.cred2 },

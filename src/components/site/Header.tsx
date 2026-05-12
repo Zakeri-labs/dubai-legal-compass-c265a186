@@ -124,14 +124,14 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-50 bg-navy-deep/95 backdrop-blur-md lg:hidden">
+        <div className="fixed inset-0 z-50 bg-navy-grad lg:hidden">
           <div className="container-px mx-auto flex h-16 items-center justify-between">
             <span className="font-display text-base font-semibold text-surface">AbooAhmad</span>
             <button onClick={() => setOpen(false)} className="rounded-md p-2 text-surface" aria-label="Close">
               <X className="h-5 w-5" />
             </button>
           </div>
-          <nav className="container-px mx-auto mt-6 flex flex-col gap-1">
+          <nav className="container-px mx-auto flex flex-col gap-1 bg-navy-grad">
             {links.map((l) => (
               <Link
                 key={l.to}

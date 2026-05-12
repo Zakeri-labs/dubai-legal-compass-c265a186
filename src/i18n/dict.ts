@@ -156,7 +156,7 @@ export const dict: Record<Locale, Dict> = {
     },
     about: {
       heading: "About Abu Ahmed",
-      lead: "A Dubai-based lawyer with 20+ years guiding clients through the UAE legal system with calm, clarity and care.",
+      lead: "Abu Ahmad is an experienced Dubai-based lawyer who has been standing beside his clients in commercial, corporate, criminal, civil, immigration, real estate and arbitration cases in the UAE for over 20 years. He works within the established Dubai law firm Zayed Al Shehhi Advocates & Legal Consultants and focuses on helping residents and expats navigate the legal system without confusion or unnecessary stress.",
       sections: [
         { title: "The practice", body: "Abu Ahmed practices under Zayed AlShehhi Advocates & Legal Consultants, an established Dubai law firm. The work spans family, criminal, civil, commercial, corporate, real estate, immigration and arbitration matters across the UAE." },
         { title: "Philosophy", body: "Reconciliation before litigation in family matters. Honesty over comfort in every conversation. Clients are urged to share the full truth so the defense can be built on solid ground — not surprises." },
