@@ -4,6 +4,7 @@ import { useLocale } from "@/i18n/LocaleProvider";
 import { SERVICES } from "@/i18n/dict";
 import { buildWaLink } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/site/Section";
+import { cn } from "@/lib/utils";
 import portrait from "@/assets/lawyer-portrait.jpg";
 import * as Icons from "lucide-react";
 
