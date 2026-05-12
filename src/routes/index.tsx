@@ -4,6 +4,7 @@ import { useLocale } from "@/i18n/LocaleProvider";
 import { SERVICES } from "@/i18n/dict";
 import { buildWaLink } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/site/Section";
+import { cn } from "@/lib/utils";
 import portrait from "@/assets/lawyer-portrait.jpg";
 import * as Icons from "lucide-react";
 
@@ -128,18 +129,124 @@ function Home() {
         </div>
       </section>
 
-      {/* WHY */}
-      <section className="bg-surface-warm py-20">
-        <div className="container-px mx-auto max-w-7xl">
-          <SectionHeading eyebrow="02 — Trust" title={t.home.whyHeading} sub={t.home.whySub} />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {t.home.why.map((w, i) => (
-              <div key={i} className="rounded-xl border border-border bg-card p-6">
-                <div className="font-display text-3xl font-semibold text-gradient-gold">0{i + 1}</div>
-                <h3 className="mt-4 font-display text-base font-semibold text-foreground">{w.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{w.body}</p>
-              </div>
-            ))}
+      {/* TRUST TIMELINE */}
+      <section
+        className="py-24 md:py-32"
+        style={{ backgroundColor: "#F4F1EA" }}
+        aria-labelledby="trust-heading"
+      >
+        <div className="mx-auto w-full max-w-[1280px] px-6 md:px-10">
+          {/* Header */}
+          <div className="max-w-2xl">
+            <div
+              className="text-[11px] font-medium uppercase tracking-[0.22em]"
+              style={{ color: "#6B6358" }}
+            >
+              02 — Trust
+            </div>
+            <h2
+              className="mt-5 font-display text-[2rem] font-semibold leading-[1.1] tracking-tight md:text-[2.75rem]"
+              style={{ color: "#111111" }}
+              id="trust-heading"
+            >
+              Why clients trust this practice
+            </h2>
+            <p
+              className="mt-5 max-w-xl text-base leading-relaxed md:text-[17px]"
+              style={{ color: "#5C564E" }}
+            >
+              Established legal counsel focused on clarity, accessibility, and practical outcomes.
+            </p>
+          </div>
+
+          {/* Timeline */}
+          <div className="relative mt-20 md:mt-28">
+            {/* Desktop horizontal line */}
+            <div
+              aria-hidden
+              className="absolute left-0 right-0 top-[11px] hidden h-px md:block"
+              style={{ backgroundColor: "rgba(17,17,17,0.12)" }}
+            />
+            {/* Mobile vertical line */}
+            <div
+              aria-hidden
+              className="absolute bottom-2 left-[11px] top-2 w-px md:hidden"
+              style={{ backgroundColor: "rgba(17,17,17,0.12)" }}
+            />
+
+            <ol className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-8">
+              {[
+                {
+                  n: "01",
+                  title: "Established office",
+                  body: "Backed by a real legal practice with a physical office and long-term professional presence.",
+                  offset: "md:mt-0",
+                },
+                {
+                  n: "02",
+                  title: "Reconciliation first",
+                  body: "In family matters, we prioritize resolution and stability before litigation whenever possible.",
+                  offset: "md:mt-10",
+                },
+                {
+                  n: "03",
+                  title: "Multilingual communication",
+                  body: "Direct legal guidance in English, Arabic, Farsi, and Urdu without communication barriers.",
+                  offset: "md:mt-4",
+                },
+                {
+                  n: "04",
+                  title: "Straightforward counsel",
+                  body: "Clear legal advice based on reality, risk, and practical outcomes — not false reassurance.",
+                  offset: "md:mt-12",
+                },
+              ].map((item) => (
+                <li key={item.n} className={cn("group relative pl-10 md:pl-0", item.offset)}>
+                  {/* Marker */}
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-1.5 grid h-[22px] w-[22px] place-items-center rounded-full md:left-auto md:top-0"
+                    style={{ backgroundColor: "#F4F1EA" }}
+                  >
+                    <span
+                      className="block h-[9px] w-[9px] rounded-full transition-transform duration-300 group-hover:scale-125"
+                      style={{ backgroundColor: "#111111" }}
+                    />
+                    <span
+                      className="absolute inset-0 rounded-full border"
+                      style={{ borderColor: "rgba(17,17,17,0.18)" }}
+                    />
+                  </span>
+
+                  {/* Content card */}
+                  <div
+                    className="md:mt-10 rounded-2xl border bg-transparent p-5 transition-all duration-300 group-hover:-translate-y-1"
+                    style={{ borderColor: "rgba(17,17,17,0.08)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(17,17,17,0.28)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(17,17,17,0.08)")}
+                  >
+                    <div
+                      className="text-[11px] font-medium tracking-[0.2em]"
+                      style={{ color: "#8A8275" }}
+                    >
+                      {item.n}
+                    </div>
+                    <h3
+                      className="mt-3 font-display text-[17px] font-semibold leading-snug"
+                      style={{ color: "#1A1A1A" }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p
+                      className="mt-2.5 text-[14px] leading-relaxed"
+                      style={{ color: "#5C564E" }}
+                    >
+                      {item.body}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
