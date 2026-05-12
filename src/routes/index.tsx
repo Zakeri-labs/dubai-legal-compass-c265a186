@@ -5,6 +5,7 @@ import { SERVICES } from "@/i18n/dict";
 import { buildWaLink } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/site/Section";
 import { TrustTimeline } from "@/components/site/TrustTimeline";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import portrait from "@/assets/lawyer-portrait.jpg";
 import * as Icons from "lucide-react";
@@ -148,21 +149,54 @@ function Home() {
       </section>
 
       {/* FEATURED Q&A */}
-      <section className="bg-surface-warm py-20">
+      <section className="bg-surface-warm py-20" aria-label={t.home.qHeading}>
         <div className="container-px mx-auto max-w-7xl">
           <SectionHeading eyebrow="04 — Knowledge" title={t.home.qHeading} sub={t.home.qSub} />
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
+          <Accordion
+            type="single"
+            collapsible
+            defaultValue="faq-0"
+            className="mt-10 flex w-full flex-col gap-3"
+          >
             {t.qa.items.slice(0, 4).map((item, i) => (
-              <div key={i} className="rounded-xl border border-border bg-card p-6">
-                <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-gold">{t.qa.categories[item.cat as keyof typeof t.qa.categories]}</div>
-                <h3 className="mt-2 font-display text-base font-semibold text-foreground">{item.q}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.a}</p>
-              </div>
+              <AccordionItem
+                key={i}
+                value={`faq-${i}`}
+                className="overflow-hidden rounded-xl border border-border bg-card shadow-none"
+              >
+                <AccordionTrigger
+                  className={cn(
+                    "items-start gap-4 px-5 py-5 text-start hover:no-underline md:px-6 md:py-6",
+                    "text-base font-normal [&>svg]:h-5 [&>svg]:w-5 [&[data-state=open]>svg]:text-gold",
+                  )}
+                >
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[11px] font-semibold uppercase tracking-[0.15em] text-gold">
+                      {t.qa.categories[item.cat as keyof typeof t.qa.categories]}
+                    </span>
+                    <span className="mt-2 block font-display text-base font-semibold leading-snug text-foreground md:text-[1.05rem]">
+                      {item.q}
+                    </span>
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="border-t border-border px-5 pb-6 pt-0 md:px-6">
+                  <p className="pt-5 text-sm leading-relaxed text-muted-foreground md:text-[0.9375rem]">{item.a}</p>
+                  <Link
+                    to="/consultation"
+                    className="mt-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-gold underline-offset-4 hover:underline"
+                  >
+                    {t.common.bookAboutThis} <ArrowRight className="h-3.5 w-3.5 shrink-0 rtl:rotate-180" aria-hidden />
+                  </Link>
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
           <div className="mt-8 text-center">
-            <Link to="/questions" className="text-sm font-medium text-foreground underline-offset-4 hover:text-gold hover:underline">
-              {t.nav.questions} →
+            <Link
+              to="/questions"
+              className="inline-flex min-h-11 items-center justify-center gap-1.5 text-sm font-medium text-foreground underline-offset-4 hover:text-gold hover:underline"
+            >
+              {t.home.moreQuestionsCta} <ArrowRight className="h-4 w-4 shrink-0 rtl:rotate-180" aria-hidden />
             </Link>
           </div>
         </div>

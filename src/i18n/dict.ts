@@ -48,6 +48,7 @@ type Dict = {
     processHeading: string;
     process: { title: string; body: string }[];
     qHeading: string; qSub: string;
+    moreQuestionsCta: string;
     ctaHeading: string; ctaBody: string;
   };
   about: {
@@ -149,6 +150,7 @@ export const dict: Record<Locale, Dict> = {
       ],
       qHeading: "Common questions, clearly answered",
       qSub: "Browse short answers to the questions clients ask most often.",
+      moreQuestionsCta: "More Legal Questions",
       ctaHeading: "One wrong decision can change your future.",
       ctaBody: "Speak with a lawyer before you act. The first consultation is on us.",
     },
@@ -482,6 +484,7 @@ export const dict: Record<Locale, Dict> = {
       ],
       qHeading: "پرسش‌های پرتکرار، پاسخ‌های روشن",
       qSub: "پاسخ‌های کوتاه به پرسش‌هایی که موکلان بیش از همه می‌پرسند.",
+      moreQuestionsCta: "پرسش‌های حقوقی بیشتر",
       ctaHeading: "یک تصمیم اشتباه می‌تواند آینده‌تان را تغییر دهد.",
       ctaBody: "پیش از هر اقدام با وکیل صحبت کنید. اولین مشاوره رایگان است.",
     },
