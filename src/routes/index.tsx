@@ -43,21 +43,13 @@ function Home() {
               {t.hero.subtitle}
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex">
               <Link
                 to="/consultation"
                 className="inline-flex items-center justify-center gap-2 rounded-md bg-gold px-6 py-3.5 text-base font-semibold text-navy-deep shadow-lg shadow-black/20 transition hover:bg-gold-soft"
               >
-                {t.hero.cta1} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+                {t.nav.bookConsult} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
               </Link>
-              <a
-                href={buildWaLink(waMsg)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 bg-white/5 px-6 py-3.5 text-base font-medium text-surface backdrop-blur transition hover:bg-white/10"
-              >
-                <MessageCircle className="h-4 w-4" /> {t.hero.cta2}
-              </a>
             </div>
 
             <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-white/10 pt-6 sm:grid-cols-4">
