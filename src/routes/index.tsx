@@ -104,7 +104,7 @@ function Home() {
           sub={t.home.servicesSub}
         />
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.slice(0, 9).map((s) => {
+          {SERVICES.filter((s) => ["family-divorce","criminal","travel-ban","cheque-bounced","accident-injury","immigration"].includes(s.slug)).map((s) => {
             const item = t.services.items[s.slug];
             const Icon = (Icons as unknown as Record<string, typeof Icons.Heart>)[s.icon] ?? Icons.Scale;
             return (
@@ -126,9 +126,12 @@ function Home() {
             );
           })}
         </div>
-        <div className="mt-8 text-center">
-          <Link to="/services" className="text-sm font-medium text-foreground underline-offset-4 hover:text-gold hover:underline">
-            {t.nav.services} →
+        <div className="mt-10 text-center">
+          <Link
+            to="/services"
+            className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition hover:border-gold hover:text-gold"
+          >
+            View All Services <ArrowRight className="h-4 w-4 rtl:rotate-180" />
           </Link>
         </div>
       </section>
