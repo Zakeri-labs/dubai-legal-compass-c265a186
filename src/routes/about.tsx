@@ -21,7 +21,7 @@ function About() {
   const { t } = useLocale();
   return (
     <>
-      <section className="bg-navy-grad text-surface">
+      <section className="relative -mt-16 bg-navy-grad pt-16 text-surface">
         <div className="container-px mx-auto grid max-w-7xl gap-10 py-20 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">About</div>

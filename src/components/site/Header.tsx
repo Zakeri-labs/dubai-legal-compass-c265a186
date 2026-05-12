@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
@@ -7,7 +7,20 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const { t, locale, setLocale } = useLocale();
   const [open, setOpen] = useState(false);
+  const [heroHeaderSolid, setHeroHeaderSolid] = useState(false);
   const loc = useLocation();
+  const isHeroOverlayPage = loc.pathname === "/" || loc.pathname === "/about";
+
+  useEffect(() => {
+    if (!isHeroOverlayPage) {
+      setHeroHeaderSolid(false);
+      return;
+    }
+    const onScroll = () => setHeroHeaderSolid(window.scrollY > 48);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHeroOverlayPage, loc.pathname]);
 
   const links = [
     { to: "/", label: t.nav.home },
@@ -20,7 +33,14 @@ export function Header() {
   ] as const;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md">
+    <header
+      className={cn(
+        "sticky top-0 z-40 border-b backdrop-blur-md",
+        isHeroOverlayPage && !heroHeaderSolid && !open
+          ? "border-white/10 bg-background/50"
+          : "border-border/60 bg-background/85"
+      )}
+    >
       <div className="container-px mx-auto flex h-16 max-w-7xl items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2">
           <span className="grid h-9 w-9 place-items-center rounded-md bg-navy-deep">

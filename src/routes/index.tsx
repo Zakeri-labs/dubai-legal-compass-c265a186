@@ -30,7 +30,7 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-navy-grad text-surface">
+      <section className="relative -mt-16 overflow-hidden bg-navy-grad pt-16 text-surface">
         <div className="pointer-events-none absolute inset-0 opacity-[0.07]"
           style={{ backgroundImage: "radial-gradient(circle at 30% 20%, var(--gold), transparent 50%)" }} />
         <div className="container-px mx-auto grid max-w-7xl items-center gap-10 py-16 md:py-24 lg:grid-cols-12 lg:gap-12">
