@@ -4,6 +4,7 @@ import { useLocale } from "@/i18n/LocaleProvider";
 import { SERVICES } from "@/i18n/dict";
 import { buildWaLink } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/site/Section";
+import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { TrustTimeline } from "@/components/site/TrustTimeline";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
@@ -137,15 +138,7 @@ function Home() {
       {/* PROCESS */}
       <section className="container-px mx-auto max-w-7xl py-20">
         <SectionHeading eyebrow="03 — Process" title={t.home.processHeading} />
-        <ol className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {t.home.process.map((p, i) => (
-            <li key={i} className="relative rounded-xl border border-border bg-card p-6">
-              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Step {i + 1}</div>
-              <h3 className="mt-3 font-display text-base font-semibold text-foreground">{p.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
-            </li>
-          ))}
-        </ol>
+        <ProcessTimeline steps={t.home.process} />
       </section>
 
       {/* FEATURED Q&A */}
