@@ -8,7 +8,7 @@ import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { TrustTimeline } from "@/components/site/TrustTimeline";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
-import portrait from "@/assets/lawyer-portrait.jpg";
+import heroSectionBg from "@/assets/Hero-section.jpg";
 import * as Icons from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -30,11 +30,14 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative -mt-16 overflow-hidden bg-navy-grad pt-16 text-surface">
-        <div className="pointer-events-none absolute inset-0 opacity-[0.07]"
-          style={{ backgroundImage: "radial-gradient(circle at 30% 20%, var(--gold), transparent 50%)" }} />
-        <div className="container-px mx-auto grid max-w-7xl items-center gap-10 py-16 md:py-24 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-7">
+      <section className="relative -mt-16 flex min-h-[min(92vh,56rem)] flex-col justify-center overflow-hidden pt-16 text-surface md:min-h-[min(90vh,60rem)]">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-cover bg-[center_28%] bg-no-repeat md:bg-center"
+          style={{ backgroundImage: `url(${heroSectionBg})` }}
+        />
+        <div className="container-px relative z-10 mx-auto w-full max-w-7xl py-16 md:py-24">
+          <div className="max-w-3xl text-start">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-gold">
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
               {t.hero.eyebrow}
@@ -69,25 +72,6 @@ function Home() {
                 </div>
               ))}
             </dl>
-          </div>
-
-          <div className="lg:col-span-5">
-            <div className="relative mx-auto max-w-md">
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-gold/40 to-bronze/20 blur-2xl" />
-              <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-navy">
-                <img
-                  src={portrait}
-                  alt="Abu Ahmed, Dubai-based lawyer"
-                  width={1024}
-                  height={1280}
-                  className="h-auto w-full object-cover"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-deep to-transparent p-5">
-                  <div className="font-display text-lg font-semibold text-surface">Abu Ahmed</div>
-                  <div className="text-xs text-gold">Lawyer · Zayed AlShehhi Advocates</div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

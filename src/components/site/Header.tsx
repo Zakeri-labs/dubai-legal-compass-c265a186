@@ -22,6 +22,9 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [isHeroOverlayPage, loc.pathname]);
 
+  const heroTopTransparent =
+    isHeroOverlayPage && !heroHeaderSolid && !open;
+
   const links = [
     { to: "/", label: t.nav.home },
     { to: "/about", label: t.nav.about },
@@ -35,10 +38,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b backdrop-blur-md",
-        isHeroOverlayPage && !heroHeaderSolid && !open
-          ? "border-white/10 bg-background/50"
-          : "border-border/60 bg-background/85"
+        "sticky top-0 z-40 border-b",
+        heroTopTransparent
+          ? "border-transparent bg-transparent"
+          : "border-border/60 bg-background/85 backdrop-blur-md"
       )}
     >
       <div className="container-px mx-auto flex h-16 max-w-7xl items-center justify-between gap-4">
@@ -47,8 +50,22 @@ export function Header() {
             <span className="font-display text-lg font-semibold text-gradient-gold">A</span>
           </span>
           <div className="leading-tight">
-            <div className="font-display text-sm font-semibold text-foreground">AbooAhmad</div>
-            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Dubai Lawyers</div>
+            <div
+              className={cn(
+                "font-display text-sm font-semibold",
+                heroTopTransparent ? "text-white" : "text-foreground"
+              )}
+            >
+              AbooAhmad
+            </div>
+            <div
+              className={cn(
+                "text-[10px] uppercase tracking-[0.18em]",
+                heroTopTransparent ? "text-white/65" : "text-muted-foreground"
+              )}
+            >
+              Dubai Lawyers
+            </div>
           </div>
         </Link>
 
@@ -61,7 +78,13 @@ export function Header() {
                 to={l.to}
                 className={cn(
                   "inline-flex h-16 items-center text-sm font-medium leading-none transition-colors",
-                  active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  heroTopTransparent
+                    ? active
+                      ? "text-white"
+                      : "text-white/80 hover:text-white"
+                    : active
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 {l.label}
@@ -73,7 +96,12 @@ export function Header() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setLocale(locale === "en" ? "fa" : "en")}
-            className="hidden items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium text-foreground transition hover:border-gold hover:text-gold sm:inline-flex"
+            className={cn(
+              "hidden items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition sm:inline-flex",
+              heroTopTransparent
+                ? "border-white/35 text-white hover:border-gold hover:text-gold"
+                : "border-border text-foreground hover:border-gold hover:text-gold"
+            )}
             aria-label="Toggle language"
           >
             <Globe className="h-3.5 w-3.5" />
@@ -82,7 +110,12 @@ export function Header() {
 
           <button
             onClick={() => setOpen(true)}
-            className="rounded-md border border-border p-2 lg:hidden"
+            className={cn(
+              "rounded-md border p-2 lg:hidden",
+              heroTopTransparent
+                ? "border-white/35 text-white"
+                : "border-border text-foreground"
+            )}
             aria-label={t.nav.menu}
           >
             <Menu className="h-5 w-5" />
