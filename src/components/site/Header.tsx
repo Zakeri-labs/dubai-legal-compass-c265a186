@@ -1,8 +1,7 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, MessageCircle, Globe } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleProvider";
-import { buildWaLink } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -41,7 +40,7 @@ export function Header() {
                 key={l.to}
                 to={l.to}
                 className={cn(
-                  "text-sm font-medium transition-colors",
+                  "inline-flex h-16 items-center text-sm font-medium leading-none transition-colors",
                   active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 )}
               >
@@ -60,23 +59,6 @@ export function Header() {
             <Globe className="h-3.5 w-3.5" />
             {locale === "en" ? "فارسی" : "EN"}
           </button>
-
-          <a
-            href={buildWaLink("Hello, I would like a legal consultation.")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-md bg-[#25D366] px-3 py-2 text-sm font-medium text-white shadow-sm transition hover:opacity-90 md:inline-flex"
-          >
-            <MessageCircle className="h-4 w-4" />
-            {t.nav.whatsapp}
-          </a>
-
-          <Link
-            to="/consultation"
-            className="hidden rounded-md bg-navy-deep px-4 py-2 text-sm font-medium text-primary-foreground transition hover:bg-navy md:inline-block"
-          >
-            {t.nav.bookConsult}
-          </Link>
 
           <button
             onClick={() => setOpen(true)}
@@ -102,7 +84,7 @@ export function Header() {
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-lg font-medium text-surface/90 hover:bg-white/5"
+                className="rounded-lg px-3 py-3 text-lg font-medium leading-none text-surface/90 hover:bg-white/5"
               >
                 {l.label}
               </Link>
@@ -115,22 +97,6 @@ export function Header() {
               <Globe className="h-4 w-4" />
               {locale === "en" ? "فارسی" : "English"}
             </button>
-            <Link
-              to="/consultation"
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-md bg-gold px-4 py-3 text-center font-medium text-navy-deep"
-            >
-              {t.nav.bookConsult}
-            </Link>
-            <a
-              href={buildWaLink("Hello, I would like a legal consultation.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 flex items-center justify-center gap-2 rounded-md bg-[#25D366] px-4 py-3 font-medium text-white"
-            >
-              <MessageCircle className="h-4 w-4" />
-              {t.nav.whatsapp}
-            </a>
           </nav>
         </div>
       )}

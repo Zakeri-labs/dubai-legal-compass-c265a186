@@ -13,6 +13,7 @@ import { LocaleProvider } from "@/i18n/LocaleProvider";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { StickyMobileCTA } from "@/components/site/StickyMobileCTA";
+import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 
 function NotFoundComponent() {
   return (
@@ -104,6 +105,7 @@ function RootComponent() {
           </main>
           <Footer />
           <StickyMobileCTA />
+          <FloatingWhatsApp />
         </div>
       </LocaleProvider>
     </QueryClientProvider>
