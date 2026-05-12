@@ -126,9 +126,12 @@ function Home() {
             );
           })}
         </div>
-        <div className="mt-8 text-center">
-          <Link to="/services" className="text-sm font-medium text-foreground underline-offset-4 hover:text-gold hover:underline">
-            {t.nav.services} →
+        <div className="mt-10 text-center">
+          <Link
+            to="/services"
+            className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition hover:border-gold hover:text-gold"
+          >
+            View All Services <ArrowRight className="h-4 w-4 rtl:rotate-180" />
           </Link>
         </div>
       </section>
