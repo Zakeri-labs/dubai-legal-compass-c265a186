@@ -9,6 +9,7 @@ import { TrustTimeline } from "@/components/site/TrustTimeline";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import heroSectionBgLtr from "@/assets/Hero-section-ltr.jpg";
+import heroSectionBgRtl from "@/assets/Hero-section-rtl.jpg";
 import heroSectionMobile from "@/assets/Hero-section-mobile.jpg";
 import * as Icons from "lucide-react";
 
@@ -25,8 +26,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const waMsg = "Hello, I'd like to book a legal consultation.";
+  const heroSectionBg = locale === "fa" ? heroSectionBgRtl : heroSectionBgLtr;
 
   return (
     <>
@@ -40,7 +42,7 @@ function Home() {
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 hidden bg-cover bg-center bg-no-repeat lg:block"
-          style={{ backgroundImage: `url(${heroSectionBgLtr})` }}
+          style={{ backgroundImage: `url(${heroSectionBg})` }}
         />
         <div className="container-px relative z-10 mx-auto w-full max-w-7xl py-16 md:py-24">
           <div className="max-w-[min(100%,22rem)] text-start sm:max-w-md md:max-w-3xl">
