@@ -11,7 +11,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { cn } from "@/lib/utils";
 import heroSectionBgLtr from "@/assets/Hero-section-ltr.jpg";
 import heroSectionBgRtl from "@/assets/Hero-section-rtl.jpg";
-import heroSectionMobile from "@/assets/Hero-section-mobile.jpg";
+import heroSectionMobileLtr from "@/assets/Hero-section-mobile-ltr.jpg";
+import heroSectionMobileRtl from "@/assets/Hero-section-mobile-rtl.jpg";
 import * as Icons from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -30,6 +31,7 @@ function Home() {
   const { t, locale } = useLocale();
   const waMsg = "Hello, I'd like to book a legal consultation.";
   const heroSectionBg = locale === "fa" ? heroSectionBgRtl : heroSectionBgLtr;
+  const heroSectionMobile = locale === "fa" ? heroSectionMobileRtl : heroSectionMobileLtr;
 
   return (
     <>
