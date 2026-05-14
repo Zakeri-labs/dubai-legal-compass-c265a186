@@ -169,7 +169,7 @@ export function ProcessTimeline({
       <ol className="relative mt-16 md:hidden">
         <div
           aria-hidden
-          className="absolute bottom-2 left-[23px] top-2 w-px"
+          className="absolute bottom-2 left-[23px] top-2 w-px rtl:left-auto rtl:right-[23px]"
           style={{ backgroundColor: "rgba(17,17,17,0.14)" }}
         />
         {steps.map((item, i) => {
@@ -199,10 +199,12 @@ export function ProcessTimeline({
                 </div>
               </div>
               <div
-                className="flex-1 pt-2 transition-all duration-500 ease-out"
+                className={cn(
+                  "flex-1 pt-2 transition-all duration-500 ease-out",
+                  isActive ? "translate-x-0" : "-translate-x-1.5 rtl:translate-x-1.5"
+                )}
                 style={{
                   opacity: isActive ? 1 : 0.55,
-                  transform: isActive ? "translateX(0)" : "translateX(-6px)",
                 }}
               >
                 <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
