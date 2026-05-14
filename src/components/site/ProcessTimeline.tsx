@@ -3,7 +3,15 @@ import { cn } from "@/lib/utils";
 
 type ProcessStep = { title: string; body: string };
 
-export function ProcessTimeline({ steps }: { steps: ProcessStep[] }) {
+export function ProcessTimeline({
+  steps,
+  stepLabels,
+  stepNumbers,
+}: {
+  steps: ProcessStep[];
+  stepLabels?: string[];
+  stepNumbers?: string[];
+}) {
   const [hovered, setHovered] = useState<number | null>(null);
   const [activeMobile, setActiveMobile] = useState<number>(0);
   const [visibleDesktop, setVisibleDesktop] = useState(false);
@@ -49,7 +57,7 @@ export function ProcessTimeline({ steps }: { steps: ProcessStep[] }) {
           {steps.map((item, i) => {
             const above = i % 2 === 0;
             const isActive = hovered === i;
-            const n = String(i + 1).padStart(2, "0");
+            const n = stepNumbers?.[i] ?? String(i + 1).padStart(2, "0");
             const textOpacity = visibleDesktop ? (hovered === null || isActive ? 1 : 0.45) : 0;
             const textTransform = visibleDesktop
               ? "translateY(0)"
@@ -65,7 +73,7 @@ export function ProcessTimeline({ steps }: { steps: ProcessStep[] }) {
                 }}
               >
                 <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
-                  Step {i + 1}
+                  {stepLabels?.[i] ?? `Step ${i + 1}`}
                 </div>
                 <h3
                   className="mt-3 font-display text-[17px] font-semibold leading-snug"
@@ -125,7 +133,7 @@ export function ProcessTimeline({ steps }: { steps: ProcessStep[] }) {
                 <div className="row-start-2 flex w-full justify-center px-2">
                   <button
                     type="button"
-                    aria-label={`Step ${i + 1} ${item.title}`}
+                    aria-label={`${stepLabels?.[i] ?? `Step ${i + 1}`} ${item.title}`}
                     className={cn(
                       "relative z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full border text-[12px] font-medium tracking-wider transition-all duration-300 ease-out"
                     )}
@@ -166,7 +174,7 @@ export function ProcessTimeline({ steps }: { steps: ProcessStep[] }) {
         />
         {steps.map((item, i) => {
           const isActive = activeMobile === i;
-          const n = String(i + 1).padStart(2, "0");
+          const n = stepNumbers?.[i] ?? String(i + 1).padStart(2, "0");
           return (
             <li
               key={i}
@@ -198,7 +206,7 @@ export function ProcessTimeline({ steps }: { steps: ProcessStep[] }) {
                 }}
               >
                 <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
-                  Step {i + 1}
+                  {stepLabels?.[i] ?? `Step ${i + 1}`}
                 </div>
                 <h3
                   className="mt-3 font-display text-[17px] font-semibold leading-snug"

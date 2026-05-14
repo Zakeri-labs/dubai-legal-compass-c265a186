@@ -42,10 +42,18 @@ type Dict = {
     callNow: string; emailUs: string; followUs: string;
   };
   home: {
+    sectionLabels: {
+      practice: string; trust: string; process: string; knowledge: string;
+    };
     servicesHeading: string; servicesSub: string;
+    viewAllServices: string;
     whyHeading: string; whySub: string;
     why: { title: string; body: string }[];
+    trustHeading: string; trustSub: string;
+    trust: { n: string; title: string; body: string }[];
     processHeading: string;
+    processStepNumbers: string[];
+    processStepLabels: string[];
     process: { title: string; body: string }[];
     qHeading: string; qSub: string;
     moreQuestionsCta: string;
@@ -131,8 +139,15 @@ export const dict: Record<Locale, Dict> = {
       callNow: "Call now", emailUs: "Email", followUs: "Follow",
     },
     home: {
+      sectionLabels: {
+        practice: "01 — Practice",
+        trust: "02 — Trust",
+        process: "03 — Process",
+        knowledge: "04 — Knowledge",
+      },
       servicesHeading: "Areas of Practice",
       servicesSub: "Focused, practical representation across the matters expats and residents face most.",
+      viewAllServices: "View All Services",
       whyHeading: "Why clients choose this office",
       whySub: "A real office, an established firm, and a lawyer who returns your message.",
       why: [
@@ -141,7 +156,17 @@ export const dict: Record<Locale, Dict> = {
         { title: "Multilingual representation", body: "Direct conversation in English, Arabic, Farsi and Urdu — no translator gap." },
         { title: "Transparent, honest counsel", body: "You receive the full legal picture, not the version you want to hear." },
       ],
+      trustHeading: "Why clients trust this practice",
+      trustSub: "Established legal counsel focused on clarity, accessibility, and practical outcomes.",
+      trust: [
+        { n: "01", title: "Established office", body: "Backed by a real legal practice with a physical office and long-term professional presence." },
+        { n: "02", title: "Reconciliation first", body: "In family matters, we prioritize resolution and stability before litigation whenever possible." },
+        { n: "03", title: "Multilingual communication", body: "Direct legal guidance in English, Arabic, Farsi, and Urdu without communication barriers." },
+        { n: "04", title: "Straightforward counsel", body: "Clear legal advice based on reality, risk, and practical outcomes — not false reassurance." },
+      ],
       processHeading: "How a case begins",
+      processStepNumbers: ["01", "02", "03", "04"],
+      processStepLabels: ["Step 1", "Step 2", "Step 3", "Step 4"],
       process: [
         { title: "Initial contact", body: "Reach out via WhatsApp or the booking form. Share the basics in your language." },
         { title: "Free assessment", body: "We review your situation, explain rights and options, and outline likely paths." },
@@ -465,8 +490,15 @@ export const dict: Record<Locale, Dict> = {
       callNow: "تماس", emailUs: "ایمیل", followUs: "دنبال کنید",
     },
     home: {
+      sectionLabels: {
+        practice: "۰۱ — حوزه فعالیت",
+        trust: "اعتماد — ۰۲",
+        process: "۰۳ — فرآیند",
+        knowledge: "۰۴ — دانش حقوقی",
+      },
       servicesHeading: "حوزه‌های تخصصی",
       servicesSub: "نمایندگی متمرکز و کاربردی در پرونده‌هایی که مهاجران و مقیمان بیش از همه با آن مواجه‌اند.",
+      viewAllServices: "مشاهده همه خدمات",
       whyHeading: "چرا موکلان این دفتر را انتخاب می‌کنند",
       whySub: "یک دفتر واقعی، یک شرکت حقوقی معتبر، و وکیلی که پاسخ پیام شما را می‌دهد.",
       why: [
@@ -475,7 +507,17 @@ export const dict: Record<Locale, Dict> = {
         { title: "نمایندگی چندزبانه", body: "گفتگوی مستقیم به انگلیسی، عربی، فارسی و اردو — بدون فاصله مترجم." },
         { title: "مشاوره صادقانه و شفاف", body: "تصویر کامل حقوقی را دریافت می‌کنید، نه روایتی که دوست دارید بشنوید." },
       ],
+      trustHeading: "چرا مراجعان به این دفتر اعتماد می‌کنند",
+      trustSub: "مشاوره حقوقی باسابقه با تمرکز بر شفافیت، دسترسی‌پذیری و نتیجه‌محوری عملی.",
+      trust: [
+        { n: "۰۱", title: "دفتر حقوقی مستقر", body: "پشتیبانی‌شده با یک دفتر حقوقی واقعی، حضور فیزیکی و سابقه حرفه‌ای پایدار." },
+        { n: "۰۲", title: "اولویت با سازش", body: "در پرونده‌های خانواده، تا حد امکان پیش از طرح دعوا، بر حل‌وفصل، آرامش و ثبات تمرکز می‌کنیم." },
+        { n: "۰۳", title: "ارتباط چندزبانه", body: "ارائه راهنمایی حقوقی مستقیم به انگلیسی، عربی، فارسی و اردو، بدون مانع زبانی." },
+        { n: "۰۴", title: "مشاوره شفاف و واقع‌بینانه", body: "ارائه توصیه حقوقی روشن بر پایه واقعیت، ریسک و نتایج عملی؛ نه اطمینان‌بخشی غیرواقعی." },
+      ],
       processHeading: "آغاز یک پرونده",
+      processStepNumbers: ["۰۱", "۰۲", "۰۳", "۰۴"],
+      processStepLabels: ["مرحله ۱", "مرحله ۲", "مرحله ۳", "مرحله ۴"],
       process: [
         { title: "تماس اولیه", body: "از طریق واتساپ یا فرم رزرو ارتباط بگیرید. مسئله را به زبان خودتان شرح دهید." },
         { title: "ارزیابی رایگان", body: "وضعیت شما را بررسی می‌کنیم، حقوق و گزینه‌ها را توضیح می‌دهیم و مسیر محتمل را ترسیم می‌کنیم." },

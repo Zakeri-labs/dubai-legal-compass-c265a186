@@ -1,27 +1,16 @@
-const ITEMS = [
-  {
-    n: "01",
-    title: "Established office",
-    body: "Backed by a real legal practice with a physical office and long-term professional presence.",
-  },
-  {
-    n: "02",
-    title: "Reconciliation first",
-    body: "In family matters, we prioritize resolution and stability before litigation whenever possible.",
-  },
-  {
-    n: "03",
-    title: "Multilingual communication",
-    body: "Direct legal guidance in English, Arabic, Farsi, and Urdu without communication barriers.",
-  },
-  {
-    n: "04",
-    title: "Straightforward counsel",
-    body: "Clear legal advice based on reality, risk, and practical outcomes — not false reassurance.",
-  },
-];
+type TrustItem = { n: string; title: string; body: string };
 
-export function TrustTimeline() {
+export function TrustTimeline({
+  label,
+  heading,
+  sub,
+  items,
+}: {
+  label: string;
+  heading: string;
+  sub: string;
+  items: TrustItem[];
+}) {
   return (
     <section
       className="py-24 md:py-32"
@@ -34,25 +23,25 @@ export function TrustTimeline() {
             className="text-[11px] font-medium uppercase tracking-[0.22em]"
             style={{ color: "#6B6358" }}
           >
-            02 — Trust
+            {label}
           </div>
           <h2
             id="trust-heading"
             className="mt-5 font-display text-[2rem] font-semibold leading-[1.1] tracking-tight md:text-[2.75rem]"
             style={{ color: "#111111" }}
           >
-            Why clients trust this practice
+            {heading}
           </h2>
           <p
             className="mt-5 max-w-xl text-base leading-relaxed md:text-[17px]"
             style={{ color: "#5C564E" }}
           >
-            Established legal counsel focused on clarity, accessibility, and practical outcomes.
+            {sub}
           </p>
         </div>
 
         <ol className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {ITEMS.map((item) => (
+          {items.map((item) => (
             <li key={item.n} className="relative rounded-xl border border-border bg-card p-6">
               <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
                 {item.n}

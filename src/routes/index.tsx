@@ -8,7 +8,7 @@ import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { TrustTimeline } from "@/components/site/TrustTimeline";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
-import heroSectionBg from "@/assets/Hero-section.jpg";
+import heroSectionBgLtr from "@/assets/Hero-section-ltr.jpg";
 import heroSectionMobile from "@/assets/Hero-section-mobile.jpg";
 import * as Icons from "lucide-react";
 
@@ -40,7 +40,7 @@ function Home() {
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 hidden bg-cover bg-center bg-no-repeat lg:block"
-          style={{ backgroundImage: `url(${heroSectionBg})` }}
+          style={{ backgroundImage: `url(${heroSectionBgLtr})` }}
         />
         <div className="container-px relative z-10 mx-auto w-full max-w-7xl py-16 md:py-24">
           <div className="max-w-[min(100%,22rem)] text-start sm:max-w-md md:max-w-3xl">
@@ -85,7 +85,7 @@ function Home() {
       {/* SERVICES */}
       <section className="container-px mx-auto max-w-7xl py-20">
         <SectionHeading
-          eyebrow="01 — Practice"
+          eyebrow={t.home.sectionLabels.practice}
           title={t.home.servicesHeading}
           sub={t.home.servicesSub}
         />
@@ -117,24 +117,33 @@ function Home() {
             to="/services"
             className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition hover:border-gold hover:text-gold"
           >
-            View All Services <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+            {t.home.viewAllServices} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
           </Link>
         </div>
       </section>
 
       {/* TRUST TIMELINE */}
-      <TrustTimeline />
+      <TrustTimeline
+        label={t.home.sectionLabels.trust}
+        heading={t.home.trustHeading}
+        sub={t.home.trustSub}
+        items={t.home.trust}
+      />
 
       {/* PROCESS */}
       <section className="container-px mx-auto max-w-7xl py-20">
-        <SectionHeading eyebrow="03 — Process" title={t.home.processHeading} />
-        <ProcessTimeline steps={t.home.process} />
+        <SectionHeading eyebrow={t.home.sectionLabels.process} title={t.home.processHeading} />
+        <ProcessTimeline
+          steps={t.home.process}
+          stepLabels={t.home.processStepLabels}
+          stepNumbers={t.home.processStepNumbers}
+        />
       </section>
 
       {/* FEATURED Q&A */}
       <section className="bg-surface-warm py-20" aria-label={t.home.qHeading}>
         <div className="container-px mx-auto max-w-7xl">
-          <SectionHeading eyebrow="04 — Knowledge" title={t.home.qHeading} sub={t.home.qSub} />
+          <SectionHeading eyebrow={t.home.sectionLabels.knowledge} title={t.home.qHeading} sub={t.home.qSub} />
           <Accordion
             type="single"
             collapsible
