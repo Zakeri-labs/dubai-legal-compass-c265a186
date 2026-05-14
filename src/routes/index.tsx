@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, MessageCircle, MapPin, Languages, Award, Building2, Check } from "lucide-react";
+import { ArrowRight, MessageCircle, MapPin, Award, Building2, Check } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { SERVICES } from "@/i18n/dict";
 import { buildWaLink } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/site/Section";
 import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { TrustTimeline } from "@/components/site/TrustTimeline";
+import { SupportedLanguages } from "@/components/site/SupportedLanguages";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import heroSectionBgLtr from "@/assets/Hero-section-ltr.jpg";
@@ -72,13 +73,13 @@ function Home() {
                 { icon: Award, label: t.hero.cred1 },
                 { icon: Building2, label: t.hero.cred2 },
                 { icon: MapPin, label: t.hero.cred3 },
-                { icon: Languages, label: t.hero.cred4 },
               ].map(({ icon: Icon, label }, i) => (
                 <div key={i} className="flex items-start gap-2.5">
                   <Icon className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
                   <dt className="text-xs font-medium text-surface/85">{label}</dt>
                 </div>
               ))}
+              <SupportedLanguages label={t.hero.cred4} textClassName="text-surface/85" />
             </dl>
           </div>
         </div>

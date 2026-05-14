@@ -3,9 +3,10 @@ import { Instagram, MessageCircle, Phone, Mail } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { PHONE, PHONE_DISPLAY, INSTAGRAM, THREADS, SERVICES } from "@/i18n/dict";
 import { buildWaLink } from "@/lib/whatsapp";
+import { SupportedLanguages } from "@/components/site/SupportedLanguages";
 
 export function Footer() {
-  const { t, locale, setLocale } = useLocale();
+  const { t } = useLocale();
   return (
     <footer className="mt-24 border-t border-border bg-navy-deep text-surface/80">
       <div className="container-px mx-auto max-w-7xl py-14">
@@ -72,12 +73,11 @@ export function Footer() {
               </li>
               <li className="text-surface/60">Dubai, United Arab Emirates</li>
             </ul>
-            <button
-              onClick={() => setLocale(locale === "en" ? "fa" : "en")}
-              className="mt-5 rounded-md border border-white/15 px-3 py-1.5 text-xs hover:border-gold hover:text-gold"
-            >
-              {locale === "en" ? "فارسی" : "English"}
-            </button>
+            <SupportedLanguages
+              label={t.hero.cred4}
+              className="mt-5"
+              textClassName="text-surface/70"
+            />
           </div>
         </div>
 
